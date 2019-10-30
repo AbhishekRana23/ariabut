@@ -112,7 +112,7 @@ setEventCallback(eventRegex.commandsRegex.mirrorStatus, eventRegex.commandsRegex
   if (msgTools.isAuthorized(msg) < 0) {
     msgTools.sendUnauthorizedMessage(bot, msg);
   } else {
-    sendStatusMessage(msg);
+    sendStatusMessage(msg , true);
   }
 });
 
