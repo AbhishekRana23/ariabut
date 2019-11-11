@@ -601,7 +601,11 @@ function driveUploadCompleteCallback(err: string, gid: string, url: string, file
     console.log(`${gid}: Uploaded `);
     if (fileSize) {
       var fileSizeStr = downloadUtils.formatSize(fileSize);
-      var rawurl = constants.INDEX_DOMAIN + fileName ;
+      if(url.indexOf("/folders/") > -1){
+        var rawurl = constants.INDEX_DOMAIN + fileName + "/";
+      }else{
+        var rawurl = constants.INDEX_DOMAIN + fileName ;
+      }
       var indexurl = encodeURI(rawurl) ;
       finalMessage = `<a href='${indexurl}'>${fileName}</a> (${fileSizeStr})`;
       // finalMessage = `<a href='${url}'>${fileName}</a> (${fileSizeStr})`;
