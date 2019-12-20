@@ -36,9 +36,11 @@ function setEventCallback(regexp: RegExp, regexpNoName: RegExp,
 setEventCallback(eventRegex.commandsRegex.start, eventRegex.commandsRegexNoName.start, (msg) => {
   if (msgTools.isAuthorized(msg) < 0) {
     // msgTools.sendUnauthorizedMessage(bot, msg);
-    msgTools.sendMessage(bot, msg, 'Bot is not usable Outside @torrentdrive group', -1);
+    msgTools.sendMessage(bot, msg, 'How About Asking @ranaji25 For Adding You?', -1);
   } else {
-    msgTools.sendMessage(bot, msg, 'Never add A dead Torrent', -1);
+    msgTools.sendMessage(bot, msg,
+                         'Welcome Bruv! See / for Commands And Happy Mirroring',
+                         -1);
   }
 });
 
@@ -112,7 +114,7 @@ setEventCallback(eventRegex.commandsRegex.mirrorStatus, eventRegex.commandsRegex
   if (msgTools.isAuthorized(msg) < 0) {
     msgTools.sendUnauthorizedMessage(bot, msg);
   } else {
-    sendStatusMessage(msg,true);
+    sendStatusMessage(msg , true);
   }
 });
 
@@ -163,7 +165,7 @@ setEventCallback(eventRegex.commandsRegex.cancelMirror, eventRegex.commandsRegex
         ` Also make sure that the download is even active.`);
     }
   } else {
-    msgTools.sendMessage(bot, msg, `Reply to Your Sent Magnet`);
+    msgTools.sendMessage(bot, msg, `Reply to the command message for the download that you want to cancel.`);
   }
 });
 
@@ -305,24 +307,21 @@ function prepDownload(msg: TelegramBot.Message, match: string, isTar: boolean): 
       setTimeout(() => {
         // dlManager.setStatusLock(msg, sendStatusMessage);
         dlManager.setStatusLock(msg, uriAdded);
-
       }, 1000);
     }
   });
 
 }
 
-
 /**
- * 
+ *
  * Added mirror function
- * send a added mirror msg
+ * send a added mirror msg --- added by @aryanvikash
  */
 
 function uriAdded(msg: TelegramBot.Message): any{
-  msgTools.sendMessage(bot, msg, 'Uri Added 😊 ', -1);
+  msgTools.sendMessage(bot, msg, 'URI Added :),\nClick /mirrorstatus to get Status.', -1);
 }
-
 
 /**
  * Sends a single status message for all active and queued downloads.
@@ -396,7 +395,6 @@ function updateAllStatus(): void {
       }
     }).catch();
 }
-
 
 function deleteAllStatus(): void {
   dlManager.forEachStatus(statusMessage => {
@@ -589,7 +587,6 @@ function initAria2(): void {
   ariaTools.setOnDownloadError(ariaOnDownloadError);
 }
 
-
 function driveUploadCompleteCallback(err: string, gid: string, url: string, filePath: string, fileName: string, fileSize: number): void {
   var finalMessage;
   if (err) {
@@ -607,13 +604,10 @@ function driveUploadCompleteCallback(err: string, gid: string, url: string, file
         var rawurl = constants.INDEX_DOMAIN + fileName ;
       }
       var indexurl = encodeURI(rawurl) ;
-      finalMessage = `<a href='${indexurl}'>${fileName}</a> (${fileSizeStr})`;
-      // finalMessage = `<a href='${url}'>${fileName}</a> (${fileSizeStr})`;
+      finalMessage = `<a href='${url}'>${fileName}</a> (${fileSizeStr}) \n\nIndex Link: \n<a href='${indexurl}'>${fileName}</a>`;
     } else {
-      // finalMessage = `<a href='${url}'>${fileName}</a>`;
-      finalMessage = `<a href='${indexurl}'>${fileName}</a>`;
-
+      finalMessage = `<a href='${url}'>${fileName}</a> \nIndex Link: \n\n<a href='${indexurl}'>${fileName}</a>`;
     }
     cleanupDownload(gid, finalMessage, url);
+    }
   }
-}
