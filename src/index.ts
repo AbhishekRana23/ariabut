@@ -39,7 +39,7 @@ setEventCallback(eventRegex.commandsRegex.start, eventRegex.commandsRegexNoName.
     msgTools.sendMessage(bot, msg, 'How About Asking @ranaji25 For Adding You?', -1);
   } else {
     msgTools.sendMessage(bot, msg,
-                         'Welcome Bruv! See / for Commands And Happy Mirroring',
+                         'Ya Im Up 😑 Throw A Torrent/Ddl/magnet At Me',
                          -1);
   }
 });
