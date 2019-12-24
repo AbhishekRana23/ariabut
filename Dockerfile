@@ -25,4 +25,4 @@ COPY ./src/.constants.js /bot/src/
 COPY ./aria*.sh ./client_secret.json ./credentials.json ./start.sh /bot/
 RUN chmod -R 777 /bot
 
-CMD ["bash","start.sh"]
+docker build . -t mirror-bot
