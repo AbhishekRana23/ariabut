@@ -39,7 +39,7 @@ setEventCallback(eventRegex.commandsRegex.start, eventRegex.commandsRegexNoName.
     msgTools.sendMessage(bot, msg, 'How About Asking @ranaji25 For Adding You?', -1);
   } else {
     msgTools.sendMessage(bot, msg,
-                         'Ya Im Up 😑 Throw A Torrent/Ddl/magnet At Me',
+                         'Yo! Im Up 😑 Throw A Torrent/Ddl/magnet At Me',
                          -1);
   }
 });
@@ -305,22 +305,11 @@ function prepDownload(msg: TelegramBot.Message, match: string, isTar: boolean): 
       console.log(`gid: ${gid} download:${match}`);
       // Wait a second to give aria2 enough time to queue the download
       setTimeout(() => {
-        // dlManager.setStatusLock(msg, sendStatusMessage);
-        dlManager.setStatusLock(msg, uriAdded);
+        dlManager.setStatusLock(msg, sendStatusMessage);
       }, 1000);
     }
   });
 
-}
-
-/**
- *
- * Added mirror function
- * send a added mirror msg --- added by @aryanvikash
- */
-
-function uriAdded(msg: TelegramBot.Message): any{
-  msgTools.sendMessage(bot, msg, 'URI Added :),\nClick /mirrorstatus to get Status.', -1);
 }
 
 /**
