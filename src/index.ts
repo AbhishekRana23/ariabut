@@ -592,7 +592,7 @@ function driveUploadCompleteCallback(err: string, gid: string, url: string, file
       }else{
         var rawurl = constants.INDEX_DOMAIN + fileName ;
       }
-      var indexurl = encodeURIComponent(rawurl) ;
+      var indexurl = encodeURIComponent(uri);
       finalMessage = `<a href='${url}'>${fileName}</a> (${fileSizeStr}) \n\n Index Link:\n<a href='${indexurl}'>${fileName}</a>`;
     } else {
       finalMessage = `<a href='${url}'>${fileName}</a> \nIndex Link: \n\n<a href='${indexurl}'>${fileName}</a>`;
